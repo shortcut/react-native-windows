@@ -123,12 +123,35 @@ namespace ReactNative.Touch
 
         private FrameworkElement GetReactViewFromView(FrameworkElement originalSource)
         {
+            var UIManager = _view.GetReactContext().GetNativeModule<UIManagerModule>();
+
             var result = originalSource;
             while (result != null && result != _view)
             {
                 if (result.HasTag())
                 {
-                    return result;
+                    var node = UIManager.ResolveShadowNode(result.GetTag());
+                    var parent = node.Parent;
+                    var sendEvent = true;
+
+                    while (parent != null && sendEvent)
+                    {
+                        switch (parent.PointerEvents)
+                        {
+                            case PointerEvents.None:
+                            case PointerEvents.BoxOnly:
+                                sendEvent = false;
+                                break;
+                        }
+
+                        parent = parent.Parent;
+                    }
+
+                    if (sendEvent && (node.PointerEvents == PointerEvents.Auto 
+                                   || node.PointerEvents == PointerEvents.BoxOnly))
+                    {
+                        return result;
+                    }                                     
                 }
 
                 result = result.Parent as FrameworkElement;

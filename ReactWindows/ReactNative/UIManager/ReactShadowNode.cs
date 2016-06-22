@@ -259,6 +259,16 @@ namespace ReactNative.UIManager
                 return (int)Math.Round(_absoluteBottom - _absoluteTop);
             }
         }
+
+        /// <summary>
+        /// The pointer events mode.
+        /// </summary>
+        public PointerEvents PointerEvents 
+        {
+            get;
+            internal set;
+        }
+
         /// <summary>
         /// Marks that an update has been seen.
         /// </summary>

@@ -609,6 +609,16 @@ namespace ReactNative.UIManager
             _operationsQueue.OnShutdown();
         }
 
+        /// <summary>
+        /// Gets the shadow node of a view.
+        /// </summary>
+        /// <param name="reactTag">The view ID.</param>
+        /// <returns>The shadowNode.</returns>
+        public ReactShadowNode ResolveShadowNode(int reactTag)
+        {
+            return _shadowNodeRegistry.GetNode(reactTag);
+        }
+
         private void HandleCreateView(ReactShadowNode cssNode, int rootViewTag, ReactStylesDiffMap styles)
         {
             if (!cssNode.IsVirtual)
@@ -639,11 +649,6 @@ namespace ReactNative.UIManager
         {
             var viewManager = _viewManagers.Get(className);
             return viewManager.CreateShadowNodeInstance();
-        }
-
-        private ReactShadowNode ResolveShadowNode(int reactTag)
-        {
-            return _shadowNodeRegistry.GetNode(reactTag);
         }
 
         private IViewManager ResolveViewManager(string className)

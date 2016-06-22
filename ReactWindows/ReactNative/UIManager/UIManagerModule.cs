@@ -85,6 +85,16 @@ namespace ReactNative.UIManager
         }
 
         /// <summary>
+        /// Gets the shadow node of a view.
+        /// </summary>
+        /// <param name="reactTag">The view ID.</param>
+        /// <returns>The shadowNode.</returns>
+        public ReactShadowNode ResolveShadowNode(int reactTag)
+        {
+            return _uiImplementation.ResolveShadowNode(reactTag);
+        }
+
+        /// <summary>
         /// Registers a new root view.
         /// </summary>
         /// <param name="rootView">The root view instance.</param>

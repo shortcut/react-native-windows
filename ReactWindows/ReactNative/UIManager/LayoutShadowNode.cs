@@ -13,6 +13,31 @@ namespace ReactNative.UIManager
         private const float Undefined = CSSConstants.Undefined;
 
         /// <summary>
+        /// Set the pointer events mode of the shadow node.
+        /// </summary>
+        /// <param name="pointerEvents">The pointerEvents mode.</param>
+        [ReactProp(ViewProps.PointerEvents)]
+        public void SetPointerEvents(string pointerEvents)
+        {
+            if (pointerEvents.Equals("none"))
+            {
+                PointerEvents = PointerEvents.None;
+            }
+            else if (pointerEvents.Equals("box-none"))
+            {
+                PointerEvents = PointerEvents.BoxNone;
+            }
+            else if (pointerEvents.Equals("box-only"))
+            {
+                PointerEvents = PointerEvents.BoxOnly;
+            }
+            else
+            {
+                PointerEvents = PointerEvents.Auto;
+            }
+        }
+
+        /// <summary>
         /// Set the width of the shadow node.
         /// </summary>
         /// <param name="width">The width.</param>

@@ -8,6 +8,11 @@
     public enum PointerEvents
     {
         /// <summary>
+        /// Container and all of its children receive touch events.
+        /// </summary>
+        Auto,
+
+        /// <summary>
         /// Neither the container nor its children receive events.
         /// </summary>
         None,
@@ -21,10 +26,5 @@
         /// Container gets events but none of its children do.
         /// </summary>
         BoxOnly,
-
-        /// <summary>
-        /// Container and all of its children receive touch events.
-        /// </summary>
-        Auto,
     }
 }
